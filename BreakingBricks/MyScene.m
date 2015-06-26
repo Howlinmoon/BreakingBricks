@@ -18,6 +18,12 @@
         // Creating a new sprite node from an image file
         SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
         
+        // Create a CG Point to anchor our new sprite - otherwise, it will be at 0,0
+        CGPoint myPoint = CGPointMake(size.width/2, size.height/2);
+        
+        // Configure the new sprite to use our new CGPoint
+        ball.position = myPoint;
+        
         // Add the new sprite node to the scene
         [self addChild:ball];
         
