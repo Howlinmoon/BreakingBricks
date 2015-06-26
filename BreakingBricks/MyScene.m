@@ -15,6 +15,15 @@
         /* Setup your scene here */
         self.backgroundColor = [SKColor whiteColor];
         
+        // Add a physics body to the entire scene - this will prevent the ball from falling off
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        
+        // change the gravity settings of the physics world (1.6 m/sec/sec roughly lunar gravity)
+        // self.physicsWorld.gravity = CGVectorMake(0, -1.6);
+        
+        // change the gravity settings of the physics world - removing all gravity...
+        self.physicsWorld.gravity = CGVectorMake(0, 0);
+        
         // Creating a new sprite node from an image file
         SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
         
