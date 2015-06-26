@@ -24,6 +24,9 @@
         // Configure the new sprite to use our new CGPoint
         ball.position = myPoint;
         
+        // Attach a physics body to the ball, making it the same size as the ball graphic
+        ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ball.frame.size.width / 2];
+        
         // Add the new sprite node to the scene
         [self addChild:ball];
         
