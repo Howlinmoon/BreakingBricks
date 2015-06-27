@@ -10,6 +10,40 @@
 
 @implementation MyScene
 
+- (void)addBall:(CGSize)size {
+    // Creating a new sprite node from an image file
+    SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
+    
+    // Create a CG Point to anchor our new sprite - otherwise, it will be at 0,0
+    CGPoint myPoint = CGPointMake(size.width/2, size.height/2);
+    
+    // Configure the new sprite to use our new CGPoint
+    ball.position = myPoint;
+    
+    // Attach a physics body to the ball, making it the same size as the ball graphic
+    ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ball.frame.size.width / 2];
+    
+    // Experimenting with Friction
+    ball.physicsBody.friction = 0;
+    
+    // Experimenting with linear damping - or how much energy is lost
+    // when moving across a surface.  (bouncing still drains energy)
+    ball.physicsBody.linearDamping = 0;
+    
+    // Experimenting with restitution - or "bounciness"
+    // value of 1.0 is no energy loss at all, 0.5 is half the energy is lost per bounce
+    ball.physicsBody.restitution = 1.0f;
+    
+    // Add the new sprite node to the scene
+    [self addChild:ball];
+    
+    // Create an initial vector for the ball
+    CGVector myVector = CGVectorMake(20, 20);
+    
+    // Apply it to the ball's physics body
+    [ball.physicsBody applyImpulse:myVector];
+}
+
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -25,37 +59,7 @@
         // change the gravity settings of the physics world - removing all gravity...
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
-        // Creating a new sprite node from an image file
-        SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
-        
-        // Create a CG Point to anchor our new sprite - otherwise, it will be at 0,0
-        CGPoint myPoint = CGPointMake(size.width/2, size.height/2);
-        
-        // Configure the new sprite to use our new CGPoint
-        ball.position = myPoint;
-        
-        // Attach a physics body to the ball, making it the same size as the ball graphic
-        ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ball.frame.size.width / 2];
-        
-        // Experimenting with Friction
-        ball.physicsBody.friction = 0;
-        
-        // Experimenting with linear damping - or how much energy is lost
-        // when moving across a surface.  (bouncing still drains energy)
-        ball.physicsBody.linearDamping = 0;
-        
-        // Experimenting with restitution - or "bounciness"
-        // value of 1.0 is no energy loss at all, 0.5 is half the energy is lost per bounce
-        ball.physicsBody.restitution = 1.0f;
-        
-        // Add the new sprite node to the scene
-        [self addChild:ball];
-        
-        // Create an initial vector for the ball
-        CGVector myVector = CGVectorMake(20, 20);
-        
-        // Apply it to the ball's physics body
-        [ball.physicsBody applyImpulse:myVector];
+        [self addBall:size];
         
         
     }
