@@ -45,17 +45,50 @@
     [self addChild:ball];
     
     // Create an initial vector for the ball
-    CGVector myVector = CGVectorMake(20, 20);
+    CGVector myVector = CGVectorMake(10, 10);
     
     // Apply it to the ball's physics body
     [ball.physicsBody applyImpulse:myVector];
+}
+
+// Player input
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    // iterate through the touches provided by iOS
+    for (UITouch *touch in touches) {
+        // Create a point based on the touch location
+        CGPoint location = [touch locationInNode:self];
+        // 'location' is now a co-ordinate pair of the actual touch position
+        // Create a NEW point where we will move the paddle to:
+        // this new location uses the actual X from the touch, but we force the Y
+        // position to be a fixed value.
+        CGPoint newPosition = CGPointMake(location.x, 100);
+        
+        // Restrict the paddle from shifting too far left or too far right
+        // by dynamically creating limits based on the paddle and screen sizes
+        CGFloat halfSizeOfPaddle = self.paddle.size.width / 2.0;
+        CGFloat xLimit = self.size.width - halfSizeOfPaddle;
+        
+        // Stop the paddle from going too far to the left
+        if (newPosition.x < halfSizeOfPaddle) {
+            newPosition.x = halfSizeOfPaddle;
+        }
+        
+        // Stop the paddle from going too far to the right
+        if (newPosition.x > xLimit) {
+            newPosition.x = xLimit;
+        }
+        
+        // Adjust the paddle to the new X location
+        self.paddle.position = newPosition;
+
+    }
 }
 
 -(void) addPlayer:(CGSize) size {
     
     // Create the player (paddle) sprite
     self.paddle = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
-    
+
     // give it an initial starting position
     self.paddle.position = CGPointMake(size.width/2, 100);
     
