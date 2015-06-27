@@ -19,6 +19,7 @@
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         
         // change the gravity settings of the physics world (1.6 m/sec/sec roughly lunar gravity)
+        // -9.8 is earth gravity
         // self.physicsWorld.gravity = CGVectorMake(0, -1.6);
         
         // change the gravity settings of the physics world - removing all gravity...
@@ -38,6 +39,12 @@
         
         // Add the new sprite node to the scene
         [self addChild:ball];
+        
+        // Create an initial vector for the ball
+        CGVector myVector = CGVectorMake(20, 20);
+        
+        // Apply it to the ball's physics model
+        [ball.physicsBody applyImpulse:myVector];
         
         
     }
