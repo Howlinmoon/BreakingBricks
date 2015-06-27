@@ -8,6 +8,13 @@
 
 #import "MyScene.h"
 
+@interface MyScene()
+
+@property (nonatomic) SKSpriteNode *paddle;
+
+@end
+
+
 @implementation MyScene
 
 - (void)addBall:(CGSize)size {
@@ -44,6 +51,24 @@
     [ball.physicsBody applyImpulse:myVector];
 }
 
+-(void) addPlayer:(CGSize) size {
+    
+    // Create the player (paddle) sprite
+    self.paddle = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
+    
+    // give it an initial starting position
+    self.paddle.position = CGPointMake(size.width/2, 100);
+    
+    // it of course, now needs the physics body attached to it
+    self.paddle.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.paddle.frame.size];
+    
+    // Make the paddle static - to keep it from being pushed around by impacts with the ball
+    self.paddle.physicsBody.dynamic = NO;
+    
+    // Add the paddle to the scene
+    [self addChild:self.paddle];
+}
+
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -60,6 +85,8 @@
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
         [self addBall:size];
+        
+        [self addPlayer:size];
         
         
     }
