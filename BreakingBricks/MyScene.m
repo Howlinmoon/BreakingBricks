@@ -43,7 +43,7 @@
         // Create an initial vector for the ball
         CGVector myVector = CGVectorMake(20, 20);
         
-        // Apply it to the ball's physics model
+        // Apply it to the ball's physics body
         [ball.physicsBody applyImpulse:myVector];
         
         
