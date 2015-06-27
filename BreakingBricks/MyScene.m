@@ -38,11 +38,15 @@
         ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ball.frame.size.width / 2];
         
         // Experimenting with Friction
-        // ball.physicsBody.friction = 0;
+        ball.physicsBody.friction = 0;
         
         // Experimenting with linear damping - or how much energy is lost
         // when moving across a surface.  (bouncing still drains energy)
         ball.physicsBody.linearDamping = 0;
+        
+        // Experimenting with restitution - or "bounciness"
+        // value of 1.0 is no energy loss at all, 0.5 is half the energy is lost per bounce
+        ball.physicsBody.restitution = 1.0f;
         
         // Add the new sprite node to the scene
         [self addChild:ball];
