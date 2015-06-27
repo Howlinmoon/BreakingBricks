@@ -37,6 +37,13 @@
         // Attach a physics body to the ball, making it the same size as the ball graphic
         ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ball.frame.size.width / 2];
         
+        // Experimenting with Friction
+        // ball.physicsBody.friction = 0;
+        
+        // Experimenting with linear damping - or how much energy is lost
+        // when moving across a surface.  (bouncing still drains energy)
+        ball.physicsBody.linearDamping = 0;
+        
         // Add the new sprite node to the scene
         [self addChild:ball];
         
