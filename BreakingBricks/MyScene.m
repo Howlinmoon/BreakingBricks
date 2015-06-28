@@ -51,6 +51,26 @@
     [ball.physicsBody applyImpulse:myVector];
 }
 
+
+-(void) addBricks:(CGSize) size {
+    // creating a total of 4 bricks
+    for (int i = 0; i < 4; i++) {
+        SKSpriteNode *brick = [SKSpriteNode spriteNodeWithImageNamed:@"brick"];
+        
+        // Add a static physics body
+        brick.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:brick.frame.size];
+        brick.physicsBody.dynamic = NO;
+        
+        // Place the brick evenly across
+        int xPos = size.width / 5 * (i + 1);
+        int yPos = size.height - 50;
+        brick.position = CGPointMake(xPos, yPos);
+        
+        [self addChild:brick];
+    }
+}
+
+
 // Player input
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     // iterate through the touches provided by iOS
@@ -120,6 +140,8 @@
         [self addBall:size];
         
         [self addPlayer:size];
+        
+        [self addBricks: size];
         
         
     }
