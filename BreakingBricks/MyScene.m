@@ -17,13 +17,17 @@
 
 // Defining our categories for use in detecting collisions and contacts
 
-static const uint32_t ballCategory = 1;
-static const uint32_t brickCategory = 2;
+static const uint32_t ballCategory   = 1;
+static const uint32_t brickCategory  = 2;
 static const uint32_t paddleCategory = 4;
-static const uint32_t edgeCategory = 8;
+static const uint32_t edgeCategory   = 8;
 
 
 @implementation MyScene
+
+-(void)didBeginContact:(SKPhysicsContact *)contact {
+    NSLog(@"Ball hit either paddle or bricks");
+}
 
 - (void)addBall:(CGSize)size {
     // Creating a new sprite node from an image file
@@ -49,6 +53,15 @@ static const uint32_t edgeCategory = 8;
     // value of 1.0 is no energy loss at all, 0.5 is half the energy is lost per bounce
     ball.physicsBody.restitution = 1.0f;
     
+    // assign the category for this object type
+    ball.physicsBody.categoryBitMask = ballCategory;
+    // create our contact mask to enable contact with bricks and paddles
+    // "|" is a logical OR combining both bitmaps - or ORing them...
+    ball.physicsBody.contactTestBitMask = brickCategory | paddleCategory;
+    
+    // experimenting with the collision bitmask
+    // ball.physicsBody.collisionBitMask = edgeCategory | brickCategory;
+    
     // Add the new sprite node to the scene
     [self addChild:ball];
     
@@ -68,6 +81,7 @@ static const uint32_t edgeCategory = 8;
         // Add a static physics body
         brick.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:brick.frame.size];
         brick.physicsBody.dynamic = NO;
+        brick.physicsBody.categoryBitMask = brickCategory;
         
         // Place the brick evenly across
         int xPos = size.width / 5 * (i + 1);
@@ -125,6 +139,7 @@ static const uint32_t edgeCategory = 8;
     
     // Make the paddle static - to keep it from being pushed around by impacts with the ball
     self.paddle.physicsBody.dynamic = NO;
+    self.paddle.physicsBody.categoryBitMask = paddleCategory;
     
     // Add the paddle to the scene
     [self addChild:self.paddle];
@@ -137,6 +152,7 @@ static const uint32_t edgeCategory = 8;
         
         // Add a physics body to the entire scene - this will prevent the ball from falling off
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        self.physicsBody.categoryBitMask = edgeCategory;
         
         // change the gravity settings of the physics world (1.6 m/sec/sec roughly lunar gravity)
         // -9.8 is earth gravity
@@ -144,6 +160,7 @@ static const uint32_t edgeCategory = 8;
         
         // change the gravity settings of the physics world - removing all gravity...
         self.physicsWorld.gravity = CGVectorMake(0, 0);
+        self.physicsWorld.contactDelegate = self;
         
         [self addBall:size];
         
