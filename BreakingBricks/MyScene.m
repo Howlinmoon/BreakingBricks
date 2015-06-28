@@ -21,23 +21,14 @@ static const uint32_t ballCategory   = 1;
 static const uint32_t brickCategory  = 2;
 static const uint32_t paddleCategory = 4;
 static const uint32_t edgeCategory   = 8;
+static const uint32_t bottomEdgeCategory = 16;
+
 
 
 @implementation MyScene
 
 -(void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"Ball hit either paddle or bricks");
-//    if (contact.bodyA.categoryBitMask == brickCategory) {
-//        NSLog(@"bodyA is a brick!");
-//        // contacted a brick - so remove it
-//        [contact.bodyA.node removeFromParent];
-//    }
-//    
-//    if (contact.bodyB.categoryBitMask == brickCategory) {
-//        NSLog(@"bodyB is a brick!");
-//        // contacted a brick - so remove it
-//        [contact.bodyB.node removeFromParent];
-//    }
+
 
     // Create a placeholder reference for the "non ball" object
     SKPhysicsBody *notTheBall;
@@ -55,6 +46,9 @@ static const uint32_t edgeCategory   = 8;
     // now notTheBall contains the node the ball ran into
     if (notTheBall.categoryBitMask == brickCategory) {
         NSLog(@"The ball hit a brick!");
+        // Play the actual sound effect
+        SKAction *playSFX = [SKAction playSoundFileNamed:@"brickhit.caf" waitForCompletion:NO];
+        [self runAction:playSFX];
         // so - remove the brick
         [notTheBall.node removeFromParent];
     }
@@ -62,9 +56,39 @@ static const uint32_t edgeCategory   = 8;
     if (notTheBall.categoryBitMask == paddleCategory) {
         // hit the player paddle
         NSLog(@"Player Boing");
+        // Play the actual sound effect
+        SKAction *playSFX = [SKAction playSoundFileNamed:@"blip.caf" waitForCompletion:NO];
+        [self runAction:playSFX];
     }
     
+    // did the ball hit the invisible node - bottom edge?
+    if (notTheBall.categoryBitMask == bottomEdgeCategory) {
+        // ball got past the paddle - the game is over
+        // create a message to tell the player
+        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Futura Medium"];
+        label.text = @"YOU LOSE!";
+        label.fontColor = [SKColor blackColor];
+        label.fontSize = 50;
+        // center the label in the middle of our scene
+        label.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        [self addChild:label];
+    }
     
+}
+
+// Create an invisible node - a line that we can determine if the ball contacts
+// on the way to the bottom of the scene
+
+- (void)addBottomEdge:(CGSize) size {
+    // bottomEdge is our invisible node
+    SKNode *bottomEdge = [SKNode node];
+    // give it a physics body - 1 pixel up from the scene bottom - and the entire way across
+    bottomEdge.physicsBody = [SKPhysicsBody bodyWithEdgeFromPoint:CGPointMake(0, 1) toPoint:CGPointMake(size.width, 1)];
+    // assign it to the special category
+    bottomEdge.physicsBody.categoryBitMask = bottomEdgeCategory;
+    
+    // Add it to the scene
+    [self addChild:bottomEdge];
 }
 
 - (void)addBall:(CGSize)size {
@@ -95,7 +119,8 @@ static const uint32_t edgeCategory   = 8;
     ball.physicsBody.categoryBitMask = ballCategory;
     // create our contact mask to enable contact with bricks and paddles
     // "|" is a logical OR combining both bitmaps - or ORing them...
-    ball.physicsBody.contactTestBitMask = brickCategory | paddleCategory;
+    // update - we also want to know if we contact the bottom edge node
+    ball.physicsBody.contactTestBitMask = brickCategory | paddleCategory | bottomEdgeCategory;
     
     // experimenting with the collision bitmask
     // ball.physicsBody.collisionBitMask = edgeCategory | brickCategory;
@@ -209,6 +234,7 @@ static const uint32_t edgeCategory   = 8;
         
         [self addBricks: size];
         
+        [self addBottomEdge:size];
         
     }
     return self;
