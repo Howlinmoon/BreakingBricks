@@ -7,6 +7,9 @@
 //
 
 #import "MyScene.h"
+// import our end scene
+#import "EndScene.h"
+
 
 @interface MyScene()
 
@@ -64,14 +67,10 @@ static const uint32_t bottomEdgeCategory = 16;
     // did the ball hit the invisible node - bottom edge?
     if (notTheBall.categoryBitMask == bottomEdgeCategory) {
         // ball got past the paddle - the game is over
-        // create a message to tell the player
-        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Futura Medium"];
-        label.text = @"YOU LOSE!";
-        label.fontColor = [SKColor blackColor];
-        label.fontSize = 50;
-        // center the label in the middle of our scene
-        label.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-        [self addChild:label];
+        // switch to the end game scene (using a built in end scene type)
+        EndScene *end = [EndScene sceneWithSize:self.size];
+        // do the actual scene swap via presentScene
+        [self.view presentScene:end];
     }
     
 }
