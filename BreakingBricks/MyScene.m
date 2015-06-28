@@ -15,6 +15,14 @@
 @end
 
 
+// Defining our categories for use in detecting collisions and contacts
+
+static const uint32_t ballCategory = 1;
+static const uint32_t brickCategory = 2;
+static const uint32_t paddleCategory = 4;
+static const uint32_t edgeCategory = 8;
+
+
 @implementation MyScene
 
 - (void)addBall:(CGSize)size {
@@ -138,6 +146,9 @@
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
         [self addBall:size];
+        
+        // add a second ball, just for fun!
+        //[self addBall:size];
         
         [self addPlayer:size];
         
