@@ -27,6 +27,44 @@ static const uint32_t edgeCategory   = 8;
 
 -(void)didBeginContact:(SKPhysicsContact *)contact {
     NSLog(@"Ball hit either paddle or bricks");
+//    if (contact.bodyA.categoryBitMask == brickCategory) {
+//        NSLog(@"bodyA is a brick!");
+//        // contacted a brick - so remove it
+//        [contact.bodyA.node removeFromParent];
+//    }
+//    
+//    if (contact.bodyB.categoryBitMask == brickCategory) {
+//        NSLog(@"bodyB is a brick!");
+//        // contacted a brick - so remove it
+//        [contact.bodyB.node removeFromParent];
+//    }
+
+    // Create a placeholder reference for the "non ball" object
+    SKPhysicsBody *notTheBall;
+    
+    // We know that in a contact event ONE of the nodes MUST be the ball
+    // since the paddle can not contact a brick...
+    // and since the ball bitmask is lower than the paddle or brick
+    // the lowest in the contact - must be the ball!
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
+        notTheBall = contact.bodyB;
+    } else {
+        notTheBall = contact.bodyA;
+    }
+    
+    // now notTheBall contains the node the ball ran into
+    if (notTheBall.categoryBitMask == brickCategory) {
+        NSLog(@"The ball hit a brick!");
+        // so - remove the brick
+        [notTheBall.node removeFromParent];
+    }
+    
+    if (notTheBall.categoryBitMask == paddleCategory) {
+        // hit the player paddle
+        NSLog(@"Player Boing");
+    }
+    
+    
 }
 
 - (void)addBall:(CGSize)size {
