@@ -70,7 +70,7 @@ static const uint32_t bottomEdgeCategory = 16;
         // switch to the end game scene (using a built in end scene type)
         EndScene *end = [EndScene sceneWithSize:self.size];
         // do the actual scene swap via presentScene
-        [self.view presentScene:end];
+        [self.view presentScene:end transition:[SKTransition doorsCloseHorizontalWithDuration:1.0]];
     }
     
 }
