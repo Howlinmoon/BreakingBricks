@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		968E8B351B3CD79500E1F154 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B2F1B3CD79500E1F154 /* ball.png */; };
-		968E8B361B3CD79500E1F154 /* ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B301B3CD79500E1F154 /* ball@2x.png */; };
-		968E8B371B3CD79500E1F154 /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B311B3CD79500E1F154 /* brick.png */; };
-		968E8B381B3CD79500E1F154 /* brick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B321B3CD79500E1F154 /* brick@2x.png */; };
-		968E8B391B3CD79500E1F154 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B331B3CD79500E1F154 /* paddle.png */; };
-		968E8B3A1B3CD79500E1F154 /* paddle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B341B3CD79500E1F154 /* paddle@2x.png */; };
 		968E8B3E1B4057FD00E1F154 /* blip.caf in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B3B1B4057FD00E1F154 /* blip.caf */; };
 		968E8B3F1B4057FD00E1F154 /* brickhit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B3C1B4057FD00E1F154 /* brickhit.caf */; };
 		968E8B401B4057FD00E1F154 /* gameover.caf in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B3D1B4057FD00E1F154 /* gameover.caf */; };
 		968E8B431B40B83400E1F154 /* EndScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 968E8B421B40B83400E1F154 /* EndScene.m */; };
+		9690B7B01B459B2600776E1B /* bricks.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9690B7AF1B459B2600776E1B /* bricks.atlas */; };
 		96BA61DD1B3CD6200034138E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA61DC1B3CD6200034138E /* Foundation.framework */; };
 		96BA61DF1B3CD6200034138E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA61DE1B3CD6200034138E /* CoreGraphics.framework */; };
 		96BA61E11B3CD6200034138E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA61E01B3CD6200034138E /* UIKit.framework */; };
@@ -47,17 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		968E8B2F1B3CD79500E1F154 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
-		968E8B301B3CD79500E1F154 /* ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball@2x.png"; sourceTree = "<group>"; };
-		968E8B311B3CD79500E1F154 /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick.png; sourceTree = "<group>"; };
-		968E8B321B3CD79500E1F154 /* brick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brick@2x.png"; sourceTree = "<group>"; };
-		968E8B331B3CD79500E1F154 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
-		968E8B341B3CD79500E1F154 /* paddle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paddle@2x.png"; sourceTree = "<group>"; };
 		968E8B3B1B4057FD00E1F154 /* blip.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blip.caf; sourceTree = "<group>"; };
 		968E8B3C1B4057FD00E1F154 /* brickhit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = brickhit.caf; sourceTree = "<group>"; };
 		968E8B3D1B4057FD00E1F154 /* gameover.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gameover.caf; sourceTree = "<group>"; };
 		968E8B411B40B83400E1F154 /* EndScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndScene.h; sourceTree = "<group>"; };
 		968E8B421B40B83400E1F154 /* EndScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndScene.m; sourceTree = "<group>"; };
+		9690B7AF1B459B2600776E1B /* bricks.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bricks.atlas; sourceTree = "<group>"; };
 		96BA61D91B3CD6200034138E /* BreakingBricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakingBricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BA61DC1B3CD6200034138E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		96BA61DE1B3CD6200034138E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -114,12 +104,7 @@
 				968E8B3B1B4057FD00E1F154 /* blip.caf */,
 				968E8B3C1B4057FD00E1F154 /* brickhit.caf */,
 				968E8B3D1B4057FD00E1F154 /* gameover.caf */,
-				968E8B2F1B3CD79500E1F154 /* ball.png */,
-				968E8B301B3CD79500E1F154 /* ball@2x.png */,
-				968E8B311B3CD79500E1F154 /* brick.png */,
-				968E8B321B3CD79500E1F154 /* brick@2x.png */,
-				968E8B331B3CD79500E1F154 /* paddle.png */,
-				968E8B341B3CD79500E1F154 /* paddle@2x.png */,
+				9690B7AF1B459B2600776E1B /* bricks.atlas */,
 				96BA61E41B3CD6200034138E /* BreakingBricks */,
 				96BA62081B3CD6200034138E /* BreakingBricksTests */,
 				96BA61DB1B3CD6200034138E /* Frameworks */,
@@ -273,16 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				96BA61E91B3CD6200034138E /* InfoPlist.strings in Resources */,
-				968E8B361B3CD79500E1F154 /* ball@2x.png in Resources */,
 				968E8B3E1B4057FD00E1F154 /* blip.caf in Resources */,
-				968E8B371B3CD79500E1F154 /* brick.png in Resources */,
-				968E8B351B3CD79500E1F154 /* ball.png in Resources */,
-				968E8B391B3CD79500E1F154 /* paddle.png in Resources */,
 				968E8B401B4057FD00E1F154 /* gameover.caf in Resources */,
-				968E8B381B3CD79500E1F154 /* brick@2x.png in Resources */,
-				968E8B3A1B3CD79500E1F154 /* paddle@2x.png in Resources */,
 				968E8B3F1B4057FD00E1F154 /* brickhit.caf in Resources */,
 				96BA61FC1B3CD6200034138E /* Images.xcassets in Resources */,
+				9690B7B01B459B2600776E1B /* bricks.atlas in Resources */,
 				96BA61FA1B3CD6200034138E /* Spaceship.png in Resources */,
 				96BA61F21B3CD6200034138E /* Main.storyboard in Resources */,
 			);
