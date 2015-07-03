@@ -12,6 +12,7 @@
 		968E8B401B4057FD00E1F154 /* gameover.caf in Resources */ = {isa = PBXBuildFile; fileRef = 968E8B3D1B4057FD00E1F154 /* gameover.caf */; };
 		968E8B431B40B83400E1F154 /* EndScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 968E8B421B40B83400E1F154 /* EndScene.m */; };
 		9690B7B01B459B2600776E1B /* bricks.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9690B7AF1B459B2600776E1B /* bricks.atlas */; };
+		9690B7B21B459C6700776E1B /* orb.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9690B7B11B459C6700776E1B /* orb.atlas */; };
 		96BA61DD1B3CD6200034138E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA61DC1B3CD6200034138E /* Foundation.framework */; };
 		96BA61DF1B3CD6200034138E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA61DE1B3CD6200034138E /* CoreGraphics.framework */; };
 		96BA61E11B3CD6200034138E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA61E01B3CD6200034138E /* UIKit.framework */; };
@@ -48,6 +49,7 @@
 		968E8B411B40B83400E1F154 /* EndScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndScene.h; sourceTree = "<group>"; };
 		968E8B421B40B83400E1F154 /* EndScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndScene.m; sourceTree = "<group>"; };
 		9690B7AF1B459B2600776E1B /* bricks.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = bricks.atlas; sourceTree = "<group>"; };
+		9690B7B11B459C6700776E1B /* orb.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = orb.atlas; sourceTree = "<group>"; };
 		96BA61D91B3CD6200034138E /* BreakingBricks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreakingBricks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BA61DC1B3CD6200034138E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		96BA61DE1B3CD6200034138E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,6 +107,7 @@
 				968E8B3C1B4057FD00E1F154 /* brickhit.caf */,
 				968E8B3D1B4057FD00E1F154 /* gameover.caf */,
 				9690B7AF1B459B2600776E1B /* bricks.atlas */,
+				9690B7B11B459C6700776E1B /* orb.atlas */,
 				96BA61E41B3CD6200034138E /* BreakingBricks */,
 				96BA62081B3CD6200034138E /* BreakingBricksTests */,
 				96BA61DB1B3CD6200034138E /* Frameworks */,
@@ -264,6 +267,7 @@
 				96BA61FC1B3CD6200034138E /* Images.xcassets in Resources */,
 				9690B7B01B459B2600776E1B /* bricks.atlas in Resources */,
 				96BA61FA1B3CD6200034138E /* Spaceship.png in Resources */,
+				9690B7B21B459C6700776E1B /* orb.atlas in Resources */,
 				96BA61F21B3CD6200034138E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

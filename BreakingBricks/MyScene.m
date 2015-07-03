@@ -92,7 +92,8 @@ static const uint32_t bottomEdgeCategory = 16;
 
 - (void)addBall:(CGSize)size {
     // Creating a new sprite node from an image file
-    SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
+    // SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
+    SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"orb0000"];
     
     // Create a CG Point to anchor our new sprite - otherwise, it will be at 0,0
     CGPoint myPoint = CGPointMake(size.width/2, size.height/2);
@@ -123,6 +124,37 @@ static const uint32_t bottomEdgeCategory = 16;
     
     // experimenting with the collision bitmask
     // ball.physicsBody.collisionBitMask = edgeCategory | brickCategory;
+    
+    
+    // get a reference to the folder containing the orb images
+    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"orb"];
+    
+    // Retrieve all of the filenames
+    NSArray *orbImageNames = [atlas textureNames];
+    
+    // Now, sort the filenames
+    NSArray *sortedNames = [orbImageNames sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    // Create an array to hold the textures
+    NSMutableArray *orbTextures = [NSMutableArray array];
+    
+    // Add them to the array
+    for (NSString *filename in sortedNames) {
+        NSLog(@"Adding filename: %@", filename);
+        SKTexture *texture = [atlas textureNamed:filename];
+        [orbTextures addObject:texture];
+        
+    }
+    
+    // create an action to animate the array of textures
+    SKAction *glow = [SKAction animateWithTextures:orbTextures timePerFrame:0.1];
+    
+    // create another action to keep the first one going (glowing)
+    SKAction *keepGlowing = [SKAction repeatActionForever:glow];
+    
+    // Run the repeater
+    [ball runAction:keepGlowing];
+    
     
     // Add the new sprite node to the scene
     [self addChild:ball];
