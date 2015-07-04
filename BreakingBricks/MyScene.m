@@ -160,7 +160,7 @@ static const uint32_t bottomEdgeCategory = 16;
     [self addChild:ball];
     
     // Create an initial vector for the ball
-    CGVector myVector = CGVectorMake(10, 10);
+    CGVector myVector = CGVectorMake(20, 20);
     
     // Apply it to the ball's physics body
     [ball.physicsBody applyImpulse:myVector];

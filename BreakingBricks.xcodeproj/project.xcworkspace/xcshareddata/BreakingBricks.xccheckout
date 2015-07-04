@@ -10,29 +10,29 @@
 	<string>BreakingBricks</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>A5B942D7-C651-42CA-9074-F0AFB408D090</key>
+		<key>26402810D45AFC53D9F22F036298635667CCAC67</key>
 		<string>https://github.com/Howlinmoon/BreakingBricks.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>BreakingBricks.xcodeproj/project.xcworkspace</string>
+	<string>BreakingBricks.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>A5B942D7-C651-42CA-9074-F0AFB408D090</key>
+		<key>26402810D45AFC53D9F22F036298635667CCAC67</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Howlinmoon/BreakingBricks.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>A5B942D7-C651-42CA-9074-F0AFB408D090</string>
+	<string>26402810D45AFC53D9F22F036298635667CCAC67</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A5B942D7-C651-42CA-9074-F0AFB408D090</string>
+			<string>26402810D45AFC53D9F22F036298635667CCAC67</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BreakingBricks</string>
 		</dict>
